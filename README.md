@@ -29,7 +29,65 @@ STEP-4: Multiply the two matrices to obtain the cipher text of length three.
 STEP-5: Combine all these groups to get the complete cipher text.
 
 ## PROGRAM 
+```C
+#include <stdio.h>
+#include <string.h>
 
+int main() {
+    unsigned int a[3][3] = {{6, 24, 1}, {13, 16, 10}, {20, 17, 15}};
+    unsigned int b[3][3] = {{8, 5, 10}, {21, 8, 21}, {21, 12, 8}};
+    unsigned int c[3], d[3];
+    char msg[4];
+    int i, j, t;
+
+    printf("Enter plain text (3 uppercase letters): ");
+    scanf("%3s", msg);
+
+    if (strlen(msg) != 3) {
+        printf("Invalid input. Enter exactly 3 uppercase letters.\n");
+        return 1;
+    }
+
+    // Convert plaintext to numeric values
+    for (i = 0; i < 3; i++) {
+        c[i] = msg[i] - 'A';
+        printf("%d ", c[i]);
+    }
+
+    // Encryption
+    for (i = 0; i < 3; i++) {
+        t = 0;
+        for (j = 0; j < 3; j++) {
+            t += a[i][j] * c[j];
+        }
+        d[i] = t % 26;
+    }
+
+    printf("\nEncrypted Cipher Text: ");
+    for (i = 0; i < 3; i++) {
+        printf("%c", d[i] + 'A');
+    }
+
+    // Decryption
+    for (i = 0; i < 3; i++) {
+        t = 0;
+        for (j = 0; j < 3; j++) {
+            t += b[i][j] * d[j];
+        }
+        c[i] = t % 26;
+    }
+
+    printf("\nDecrypted Cipher Text: ");
+    for (i = 0; i < 3; i++) {
+        printf("%c", c[i] + 'A');
+    }
+
+    printf("\n");
+    return 0;
+}
+```
 ## OUTPUT
+![alt text](<Screenshot 2025-04-24 132154.png>)
 
 ## RESULT
+The program is executed successfully
