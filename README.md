@@ -87,7 +87,8 @@ int main() {
 }
 ```
 ## OUTPUT
-![alt text](<Screenshot 2025-04-24 132154.png>)
+![Cryptography](https://github.com/user-attachments/assets/773a8ab4-b1de-4853-9907-83088788d7d0)
+
 
 ## RESULT
 The program is executed successfully
